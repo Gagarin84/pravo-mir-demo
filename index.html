@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ПравоМир — Досудебное урегулирование споров</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #246bfd;
+      --blue-dark: #1657db;
+      --sky: #eef5ff;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --line: #dbe5f0;
+      --white: #ffffff;
+      --green: #15803d;
+      --orange: #b45309;
+      --red: #b91c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f6f9fc;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      color: var(--white);
+      background: linear-gradient(120deg, var(--navy), var(--blue));
+      padding: 48px 20px 76px;
+    }
+
+    .container {
+      width: min(100% - 32px, 960px);
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    h1 {
+      max-width: 740px;
+      margin: 28px 0 12px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.12;
+    }
+
+    .hero-text {
+      max-width: 700px;
+      margin: 0;
+      color: #dbeafe;
+      font-size: 18px;
+    }
+
+    main {
+      margin-top: -40px;
+      padding-bottom: 56px;
+    }
+
+    .card {
+      margin-bottom: 22px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--white);
+      box-shadow: 0 12px 32px rgba(16, 42, 67, 0.08);
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 25px;
+    }
+
+    .hint {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 170px;
+      padding: 16px;
+      resize: vertical;
+      border: 1px solid #b9c9d9;
+      border-radius: 10px;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    textarea:focus {
+      outline: 3px solid rgba(36, 107, 253, 0.2);
+      border-color: var(--blue);
+    }
+
+    .notice {
+      margin: 14px 0 18px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: #1e40af;
+      background: var(--sky);
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px 20px;
+      border: 0;
+      border-radius: 10px;
+      color: var(--white);
+      background: var(--blue);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--blue-dark);
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    .examples {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .example {
+      width: auto;
+      padding: 14px;
+      text-align: left;
+      color: var(--ink);
+      background: #f8fbff;
+      border: 1px solid var(--line);
+    }
+
+    .example:hover {
+      background: #eaf3ff;
+    }
+
+    .example strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--navy);
+    }
+
+    .result {
+      display: none;
+    }
+
+    .result.visible {
+      display: block;
+    }
+
+    .badge {
+      display: inline-block;
+      margin: 2px 0 15px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #075985;
+      background: #e0f2fe;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .item {
+      padding: 16px;
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      background: #f8fbff;
+    }
+
+    .item span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .item strong {
+      color: var(--navy);
+    }
+
+    .section {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 10px;
+      background: #f8fafc;
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 17px;
+    }
+
+    ul, ol {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .disclaimer {
+      margin-top: 22px;
+      padding: 14px;
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      color: #78350f;
+      background: #fffbeb;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 24px 0 42px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">⚖️ ПРАВОМИР</div>
+      <h1>Досудебное урегулирование споров</h1>
+      <p class="hero-text">
+        Опишите ситуацию — демо-версия покажет предварительную категорию спора,
+        возможную процедуру и список документов для подготовки.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Опишите ваш спор</h2>
+      <p class="hint">Для демонстрации не вводите реальные паспортные данные, номера карт, адреса и телефоны.</p>
+
+      <label for="description">Описание ситуации</label>
+      <textarea id="description" placeholder="Например: Работодатель не выплатил зарплату за два месяца и уволил без объяснения причин."></textarea>
+
+      <div class="notice">
+        🔒 Сейчас это демонстрационная версия: она не сохраняет обращение и не подключена к реальному AI.
+      </div>
+
+      <button id="analyseButton" type="button">Проанализировать спор</button>
+
+      <div class="examples">
+        <button class="example" type="button" data-text="Работодатель не выплатил зарплату за три месяца и уволил без объяснения причин.">
+          <strong>💼 Трудовой спор</strong>
+          Невыплата зарплаты и увольнение
+        </button>
+
+        <button class="example" type="button" data-text="Поставщик не доставил оплаченный товар по договору поставки.">
+          <strong>📦 Договорной спор</strong>
+          Нарушение условий поставки
+        </button>
+
+        <button class="example" type="button" data-text="Застройщик нарушил сроки сдачи квартиры по ДДУ на восемь месяцев.">
+          <strong>🏠 Потребительский спор</strong>
+          Нарушение сроков сдачи жилья
+        </button>
+
+        <button class="example" type="button" data-text="Банк начислил комиссию по кредиту, которой не было в договоре.">
+          <strong>🏦 Финансовый спор</strong>
+          Спор с банком
+        </button>
+      </div>
+    </section>
+
+    <section id="result" class="card result" aria-live="polite">
+      <div class="badge">Демонстрационный результат</div>
+      <h2 id="category">Категория спора</h2>
+      <p id="subcategory" class="hint"></p>
+
+      <div class="grid">
+        <div class="item">
+          <span>Рекомендуемая процедура</span>
+          <strong id="procedure"></strong>
+        </div>
+        <div class="item">
+          <span>Срочность</span>
+          <strong id="urgency"></strong>
+        </div>
+        <div class="item">
+          <span>Уверенность демонстрации</span>
+          <strong id="confidence"></strong>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Почему такой результат</h3>
+        <p id="explanation"></p>
+      </div>
+
+      <div class="section">
+        <h3>Какие документы подготовить</h3>
+        <ul id="documents"></ul>
+      </div>
+
+      <div class="section">
+        <h3>Следующие шаги</h3>
+        <ol id="steps"></ol>
+      </div>
+
+      <div class="disclaimer">
+        ⚠️ Это демонстрационный интерфейс, а не юридическая консультация. Для точной оценки конкретной ситуации обратитесь к квалифицированному юристу.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Демо-проект «ПравоМир» · интерфейс для будущей системы досудебного урегулирования споров
+  </footer>
+
+  <script>
+    const description = document.getElementById("description");
+    const analyseButton = document.getElementById("analyseButton");
+    const resultBlock = document.getElementById("result");
+
+    function classifyDemo(text) {
+      const value = text.toLowerCase();
+
+      if (value.includes("зарплат") || value.includes("увол") || value.includes("работодател")) {
+        return {
+          category: "Трудовой спор",
+          subcategory: "Невыплата заработной платы и/или прекращение трудовых отношений",
+          procedure: "Переговоры или медиация; подготовка письменной претензии",
+          urgency: "Высокая",
+          confidence: "92%",
+          explanation: "Описание содержит признаки конфликта между работником и работодателем: вопрос оплаты труда или увольнения.",
+          documents: ["Трудовой договор", "Приказ об увольнении — если он есть", "Расчётные листки или банковские выписки", "Переписка с работодателем"],
+          steps: ["Собрать документы и переписку", "Подготовить письменное требование работодателю", "Рассмотреть медиацию или обратиться за юридической консультацией"]
+        };
+      }
+
+      if (value.includes("постав") || value.includes("товар") || value.includes("договор")) {
+        return {
+          category: "Договорной спор",
+          subcategory: "Возможное нарушение условий договора",
+          procedure: "Претензионный порядок; затем переговоры или медиация",
+          urgency: "Средняя",
+          confidence: "88%",
+          explanation: "В описании упоминаются договорные отношения, поставка или оплата. Обычно сначала фиксируют позицию сторон письменной претензией.",
+          documents: ["Договор и приложения", "Счета, платёжные поручения или чеки", "Накладные, акты или иные документы о поставке", "Переписка с контрагентом"],
+          steps: ["Проверить условия договора", "Собрать подтверждения оплаты и исполнения", "Подготовить и направить претензию"]
+        };
+      }
+
+      if (value.includes("застрой") || value.includes("дду") || value.includes("квартир")) {
+        return {
+          category: "Потребительский спор",
+          subcategory: "Возможное нарушение сроков или условий по недвижимости",
+          procedure: "Претензия; переговоры/медиация; при необходимости судебная защита",
+          urgency: "Средняя",
+          confidence: "90%",
+          explanation: "Упоминание застройщика, квартиры или ДДУ указывает на спор, связанный с приобретением недвижимости.",
+          documents: ["Договор долевого участия или иной договор", "Платёжные документы", "Акты и уведомления", "Переписка с застройщиком"],
+          steps: ["Проверить условия и сроки договора", "Зафиксировать нарушение", "Подготовить претензию"]
+        };
+      }
+
+      if (value.includes("банк") || value.includes("кредит") || value.includes("комисси")) {
+        return {
+          category: "Финансовый спор",
+          subcategory: "Возможное несогласие с условиями банковского продукта",
+          procedure: "Обращение в банк с претензией; затем переговоры или медиация",
+          urgency: "Низкая",
+          confidence: "86%",
+          explanation: "Описание связано с банковскими услугами, кредитом либо комиссией. Сначала следует проверить договор и направить обращение в банк.",
+          documents: ["Кредитный договор или договор банковского обслуживания", "Выписка по счёту", "Уведомления банка", "Расчёт спорной суммы"],
+          steps: ["Сверить начисления с договором", "Подготовить обращение в банк", "Сохранить ответ банка и документы"]
+        };
+      }
+
+      return {
+        category: "Требуется уточнение",
+        subcategory: "Недостаточно данных для предварительной категории",
+        procedure: "Сбор дополнительной информации",
+        urgency: "Средняя",
+        confidence: "45%",
+        explanation: "Демонстрационная версия не смогла уверенно определить тип спора. Добавьте, кто является сторонами, что произошло, когда и какие документы есть.",
+        documents: ["Подробное описание ситуации", "Договоры или иные документы", "Переписка сторон", "Подтверждение оплаты или ущерба — при наличии"],
+        steps: ["Опишите обстоятельства подробнее", "Укажите вторую сторону спора", "Перечислите имеющиеся документы"]
+      };
+    }
+
+    function renderList(elementId, values) {
+      const list = document.getElementById(elementId);
+      list.innerHTML = "";
+      values.forEach((value) => {
+        const item = document.createElement("li");
+        item.textContent = value;
+        list.appendChild(item);
+      });
+    }
+
+    function showResult(data) {
+      document.getElementById("category").textContent = data.category;
+      document.getElementById("subcategory").textContent = data.subcategory;
+      document.getElementById("procedure").textContent = data.procedure;
+      document.getElementById("urgency").textContent = data.urgency;
+      document.getElementById("confidence").textContent = data.confidence;
+      document.getElementById("explanation").textContent = data.explanation;
+
+      renderList("documents", data.documents);
+      renderList("steps", data.steps);
+
+      resultBlock.classList.add("visible");
+      resultBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    analyseButton.addEventListener("click", () => {
+      const text = description.value.trim();
+
+      if (text.length < 10) {
+        alert("Опишите ситуацию чуть подробнее — минимум 10 символов.");
+        return;
+      }
+
+      analyseButton.disabled = true;
+      analyseButton.textContent = "Анализируем…";
+
+      setTimeout(() => {
+        showResult(classifyDemo(text));
+        analyseButton.disabled = false;
+        analyseButton.textContent = "Проанализировать спор";
+      }, 700);
+    });
+
+    document.querySelectorAll(".example").forEach((button) => {
+      button.addEventListener("click", () => {
+        description.value = button.dataset.text;
+        description.focus();
+      });
+    });
+  </script>
+</body>
+</html>
