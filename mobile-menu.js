@@ -1,0 +1,1 @@
+(function(){var b=document.querySelector(".burger"),m=document.getElementById("mobileMenu");if(!b||!m)return;b.onclick=function(){m.classList.toggle("open");b.setAttribute("aria-expanded",m.classList.contains("open"))};m.onclick=function(e){if(e.target.tagName==="A")m.classList.remove("open")}})();
