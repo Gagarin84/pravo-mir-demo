@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conflikt — Личный кабинет</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+body{font-family:'Inter',Arial,sans-serif}
+.hero{background:linear-gradient(135deg,#0b1020,#26395e)}
+.mark{display:inline-block;width:14px;height:14px;margin-right:5px;border:2px solid #a5b4fc;border-radius:50%;box-shadow:8px 0 0 -2px #7dd3fc}
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+<header class="hero text-white">
+<div class="max-w-6xl mx-auto px-5 py-5 flex items-center justify-between gap-3">
+<a href="index.html" class="text-xl font-extrabold whitespace-nowrap"><span class="mark"></span>Conflikt</a>
+<nav class="hidden md:flex items-center gap-5 text-sm text-slate-200">
+<a href="index.html" class="hover:text-white">Главная</a>
+<a href="services.html" class="hover:text-white">Услуги</a>
+<a href="process.html" class="hover:text-white">Процесс</a>
+<a href="resources.html" class="hover:text-white">Ресурсы</a>
+<a href="about.html" class="hover:text-white">О нас</a>
+</nav>
+<a href="apply.html" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2.5 rounded-xl font-bold text-sm">Подать заявку</a>
+</div>
+<div class="md:hidden max-w-6xl mx-auto px-5 pb-4 flex gap-4 overflow-x-auto text-sm text-slate-200">
+<a href="index.html">Главная</a><a href="services.html">Услуги</a><a href="process.html">Процесс</a><a href="resources.html">Ресурсы</a><a href="about.html">О нас</a><a href="account.html">Кабинет</a>
+</div>
+<div class="max-w-6xl mx-auto px-5 pb-12">
+<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mt-8">Личный кабинет</h1>
+<p class="text-slate-300 mt-3 max-w-2xl">Вход, регистрация и управление обращениями в защищённой среде.</p>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-5 py-12">
+<div id="authBox" class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 max-w-xl mx-auto">
+<div class="flex gap-2 mb-6">
+<button id="tabLogin" class="flex-1 py-2.5 rounded-xl font-bold bg-indigo-100 text-indigo-700">Вход</button>
+<button id="tabRegister" class="flex-1 py-2.5 rounded-xl font-bold bg-slate-100 text-slate-600">Регистрация</button>
+</div>
+<form id="authForm" class="space-y-4">
+<div>
+<label for="email" class="block text-sm font-bold text-slate-700 mb-1">E-mail</label>
+<input id="email" type="email" required autocomplete="email" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400">
+</div>
+<div>
+<label for="password" class="block text-sm font-bold text-slate-700 mb-1">Пароль</label>
+<input id="password" type="password" required minlength="8" autocomplete="current-password" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400">
+</div>
+<button type="submit" id="submitBtn" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-3 rounded-xl font-bold">Войти</button>
+<p id="authMessage" class="text-sm text-slate-600 min-h-[20px]"></p>
+<p class="text-xs text-slate-500">Не передавайте через формы чувствительные данные: полные документы, банковские реквизиты и пароли от других сервисов.</p>
+</form>
+</div>
+<div id="cabinetBox" class="hidden bg-white border border-slate-200 rounded-3xl p-6 md:p-8">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<div>
+<p class="text-sm text-slate-500">Вы вошли как</p>
+<p id="userEmail" class="text-xl font-bold break-all"></p>
+</div>
+<button id="logoutBtn" class="bg-slate-900 hover:bg-slate-700 text-white px-5 py-3 rounded-xl font-bold">Выйти</button>
+</div>
+<div class="grid md:grid-cols-3 gap-4 mt-8">
+<div class="border border-slate-200 rounded-2xl p-5"><h3 class="font-bold mb-1">Мои обращения</h3><p class="text-sm text-slate-600">Статус, история и согласованные следующие шаги по обращению.</p></div>
+<div class="border border-slate-200 rounded-2xl p-5"><h3 class="font-bold mb-1">Документы</h3><p class="text-sm text-slate-600">Защищённый обмен документами после запуска серверной инфраструктуры.</p></div>
+<div class="border border-slate-200 rounded-2xl p-5"><h3 class="font-bold mb-1">Сообщения</h3><p class="text-sm text-slate-600">Контакт со специалистом платформы по вашей ситуации.</p></div>
+</div>
+</div>
+</main>
+<footer class="bg-slate-950 text-slate-300 py-10">
+<div class="max-w-6xl mx-auto px-5">
+<div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+<a href="index.html" class="hover:text-white">Главная</a>
+<a href="privacy.html" class="hover:text-white">Политика конфиденциальности</a>
+<a href="terms.html" class="hover:text-white">Условия использования</a>
+<a href="contacts.html" class="hover:text-white">Контакты</a>
+</div>
+<p class="text-slate-500 text-xs mt-6">© 2026 Conflikt. Все права защищены.</p>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="cookie-banner.js"></script>
+<script>
+const authForm=document.getElementById('authForm');
+const authMessage=document.getElementById('authMessage');
+const submitBtn=document.getElementById('submitBtn');
+const tabLogin=document.getElementById('tabLogin');
+const tabRegister=document.getElementById('tabRegister');
+const authBox=document.getElementById('authBox');
+const cabinetBox=document.getElementById('cabinetBox');
+const userEmail=document.getElementById('userEmail');
+let mode='login';
+function setMode(next){mode=next;tabLogin.className='flex-1 py-2.5 rounded-xl font-bold '+(mode==='login'?'bg-indigo-100 text-indigo-700':'bg-slate-100 text-slate-600');tabRegister.className='flex-1 py-2.5 rounded-xl font-bold '+(mode==='register'?'bg-indigo-100 text-indigo-700':'bg-slate-100 text-slate-600');submitBtn.textContent=mode==='login'?'Войти':'Создать аккаунт';authMessage.textContent='';}
+tabLogin.addEventListener('click',()=>setMode('login'));
+tabRegister.addEventListener('click',()=>setMode('register'));
+function showMessage(text){authMessage.textContent=text;}
+authForm.addEventListener('submit',async(e)=>{e.preventDefault();const email=document.getElementById('email').value.trim();const password=document.getElementById('password').value;if(!supabase){showMessage('Supabase ещё не подключён. Проверьте config.js.');return;}submitBtn.disabled=true;submitBtn.textContent='Обработка...';try{if(mode==='login'){const{error}=await supabase.auth.signInWithPassword({email,password});if(error){showMessage('Не удалось войти: '+error.message);}}else{const{error}=await supabase.auth.signUp({email,password});if(error){showMessage('Не удалось создать аккаунт: '+error.message);}else{showMessage('Аккаунт создан. Проверьте почту, если подтверждение включено в Supabase.');}}}catch(err){showMessage('Ошибка соединения. Попробуйте позже.');}finally{submitBtn.disabled=false;submitBtn.textContent=mode==='login'?'Войти':'Создать аккаунт';}});
+async function checkUser(){if(!supabase){showMessage('Supabase ещё не подключён. Проверьте config.js.');return;}const{data}=await supabase.auth.getUser();if(data&&data.user){authBox.classList.add('hidden');cabinetBox.classList.remove('hidden');userEmail.textContent=data.user.email||'';}else{authBox.classList.remove('hidden');cabinetBox.classList.add('hidden');}}
+document.getElementById('logoutBtn').addEventListener('click',async()=>{await supabase.auth.signOut();checkUser();});
+checkUser();
+</script>
+</body>
+</html>
